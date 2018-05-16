@@ -14,7 +14,7 @@ brightness = 10  # 0-31, 224-255 or 0xE0-0xFF
 winningnumbers = [6,12,18,24]
 losingnumbers = [1,2,3,4,5,7,8,9,10,11,13,14,15,16,17,19,20,21,22,23]
 
-spin = 0 # for testing printed to console
+spin = 0 # spin number
 winning_spins = 0 # for testing average wins printed to console
 
 def selectwinner(spins): # function for choosing winner
@@ -35,7 +35,7 @@ def selectwinner(spins): # function for choosing winner
 
 
     winner = {
-        "number":numleds, 
+        "numleds":numleds, 
         "led_colour":led_colour, 
         "winning_spins":winning_spins # for testing average wins printed to console
     }
@@ -54,9 +54,9 @@ try:
 
         decay = rotations * numleds # total number of leds in this spin - although more as last rotation is less
 
-        spin += 1 # for testing printed to console
+        spin += 1 # spin number going up each loop
 
-        for rotation in range(1,rotations): # start spin loop
+        for rotation in range(1,rotations): # start spin - multiple rotations loop
             
             led_colour = [255,255,255] # default led colour B,G,R
             led_stop_colour  = [255,255,255] # reset to default colour B,G,R
@@ -65,7 +65,7 @@ try:
 
                 winner = selectwinner(spin)
                 led_stop_colour = winner.get("led_colour") # colour of winner or loser
-                numleds = winner.get("number") # chosen winning or loser number
+                numleds = winner.get("numleds") # chosen winning or loser number
                 winning_spins = winner.get("winning_spins") # for testing average wins printed to console
 
                 # print("LED " + str(numleds)) # for testing print chosen led to console
